@@ -224,6 +224,7 @@ class Worker(utils.EventEmitter[EventTypes]):
         devmode: bool = True,
         loop: asyncio.AbstractEventLoop | None = None,
     ) -> None:
+        print('=================')
         super().__init__()
         opts.ws_url = opts.ws_url or os.environ.get("LIVEKIT_URL") or ""
         opts.api_key = opts.api_key or os.environ.get("LIVEKIT_API_KEY") or ""
