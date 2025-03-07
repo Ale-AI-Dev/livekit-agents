@@ -298,6 +298,8 @@ class RealtimeModel:
         )
         self._base_url = base_url
 
+        print(f"Hello from Ale AI: ===============>>>> {base_url}")
+
         is_azure = (
             api_version is not None
             or entra_token is not None
