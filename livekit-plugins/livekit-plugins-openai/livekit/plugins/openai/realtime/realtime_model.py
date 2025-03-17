@@ -1743,10 +1743,7 @@ class RealtimeSession(utils.EventEmitter[EventTypes]):
     @utils.log_exceptions(logger=logger)
     async def _run_fnc_task(self, fnc_call_info: llm.FunctionCallInfo, item_id: str):
         logger.debug(
-            "executing ai function",
-            extra={
-                "function": fnc_call_info.function_info.name,
-            },
+            f"executing ai function - {fnc_call_info.function_info.name}",
         )
 
         called_fnc = fnc_call_info.execute()
@@ -1757,10 +1754,7 @@ class RealtimeSession(utils.EventEmitter[EventTypes]):
 
         tool_call = llm.ChatMessage.create_tool_from_called_function(called_fnc)
         logger.info(
-            "creating response for tool call",
-            extra={
-                "function": fnc_call_info.function_info.name,
-            },
+            f"creating response for tool call - {fnc_call_info.function_info.name}",
         )
         if tool_call.content is not None:
             create_fut = self.conversation.item.create(
